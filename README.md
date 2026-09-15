@@ -4,6 +4,18 @@
 
 ![Tech](https://img.shields.io/badge/React-19-61DAFB) ![Tech](https://img.shields.io/badge/TypeScript-Vite-646CFF) ![Tech](https://img.shields.io/badge/Tailwind-shadcn%2Fui-38BDF8)
 
+## 📸 界面截图
+
+> 截图中的示例数据来自 [demo-data.json](docs/demo-data.json)（哔哩哔哩大会员、ChatGPT Pro 5x、Keep 会员、百度网盘 SVIP、网易云音乐黑胶 VIP、原神空月祝福、喜马拉雅 VIP），可在应用内「设置 → 导入 JSON」一键导入体验；订阅卡片图标为各产品官方 Logo（源图见 [docs/logos/](docs/logos/)）。
+
+| 订阅管理 · 网格视图（浅色） | 仪表盘（浅色） |
+| :---: | :---: |
+| ![订阅管理 · 网格视图（浅色）](docs/screenshots/subscriptions-grid-light.png) | ![仪表盘（浅色）](docs/screenshots/dashboard-light.png) |
+
+| 订阅管理 · 深色模式 |
+| :---: |
+| ![订阅管理 · 深色模式](docs/screenshots/subscriptions-grid-dark.png) |
+
 ## ✨ 功能特性
 
 ### 📦 订阅管理
