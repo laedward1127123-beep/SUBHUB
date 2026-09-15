@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ===== 飞书 Lark 风格 · 浅色 ===== */
+    --background: 220 14% 96%;           /* #F5F6F7 */
+    --foreground: 222 19% 12%;           /* #1F2329 */
+    --card: 0 0% 100%;
+    --card-foreground: 222 19% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 19% 12%;
+    --primary: 222 100% 60%;             /* #3370FF 飞书蓝（默认强调色） */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 224 70% 49%;        /* #2952CC */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 19% 12%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;      /* #646A73 */
+    --accent: 220 14% 96%;
+    --accent-foreground: 222 19% 12%;
+    --destructive: 2 85% 62%;            /* #F54A45 */
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;               /* #E5E6EB */
+    --input: 220 13% 91%;
+    --ring: 222 100% 60%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 19% 12%;
+    --sidebar-primary: 222 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 100% 60%;
+    --sidebar-accent-foreground: 222 100% 60%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 222 100% 60%;
+  }
+
+  .dark {
+    --background: 222 19% 9%;
+    --foreground: 0 0% 96%;
+    --card: 222 17% 13%;
+    --card-foreground: 0 0% 96%;
+    --popover: 222 17% 13%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 222 100% 64%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 222 100% 70%;
+    --secondary: 222 12% 18%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 222 12% 18%;
+    --muted-foreground: 220 9% 62%;
+    --accent: 222 12% 18%;
+    --accent-foreground: 0 0% 96%;
+    --destructive: 2 75% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 12% 20%;
+    --input: 222 12% 20%;
+    --ring: 222 100% 64%;
+    --sidebar-background: 222 17% 13%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 222 100% 64%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 12% 18%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 222 12% 20%;
+    --sidebar-ring: 222 100% 64%;
+  }
+
+  /* ===== 强调色色板（通过 html[data-accent] 切换 CSS 变量） ===== */
+  html[data-accent='blue'] {
+    --primary: 222 100% 60%;  --primary-hover: 224 70% 49%;  --ring: 222 100% 60%;
+  }
+  html[data-accent='green'] {
+    --primary: 139 55% 43%;   --primary-hover: 139 60% 35%;  --ring: 139 55% 43%;
+  }
+  html[data-accent='purple'] {
+    --primary: 265 87% 60%;   --primary-hover: 265 80% 50%;  --ring: 265 87% 60%;
+  }
+  html[data-accent='orange'] {
+    --primary: 29 95% 54%;    --primary-hover: 25 90% 45%;   --ring: 29 95% 54%;
+  }
+  html[data-accent='red'] {
+    --primary: 2 85% 62%;     --primary-hover: 2 80% 50%;    --ring: 2 85% 62%;
+  }
+  html[data-accent='teal'] {
+    --primary: 195 100% 54%;  --primary-hover: 198 95% 44%;  --ring: 195 100% 54%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+}
+
+/* ===== 按钮微交互：hover 微缩放、active 按压下沉 ===== */
+@layer components {
+  .btn-press {
+    @apply transition-transform duration-150 hover:scale-[1.03] active:scale-95;
+  }
+}
+
+/* ===== 弹窗缩放 + 淡入过渡（radix dialog/drawer 通用） ===== */
+@keyframes subhub-zoom-in {
+  from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes subhub-zoom-out {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
+}
+[data-state='open'].dialog-zoom,
+.dialog-zoom[data-state='open'] {
+  animation: subhub-zoom-in 0.18s ease-out;
+}
+
+/* 细滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: hsl(var(--muted-foreground) / 0.25);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.4);
+}
